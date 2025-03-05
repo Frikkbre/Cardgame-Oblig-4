@@ -25,7 +25,6 @@ public class DeckOfCards {
   /**
    * Deals n cards from the remaining cards in the deck
    * checks if deck has more than 1 and under 52 cards and throws exception if not
-   * @return
    */
   public void dealHand(int n) {
     hand = new ArrayList<>();
@@ -34,6 +33,7 @@ public class DeckOfCards {
     } else if (n < 1 || n > deck.size()) {
       throw new IllegalArgumentException("you must deal a hand between 1 and 52 cards");
     }
+    hand.clear();
     for(int i = 0; i < n; i++) {
       hand.add(deck.get(i));
       deck.remove(i);
