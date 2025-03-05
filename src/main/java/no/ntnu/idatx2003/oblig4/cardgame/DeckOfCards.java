@@ -18,7 +18,7 @@ public class DeckOfCards {
     }
   }
 
-  public void shuffle(ArrayList<String> deck) {
+  public void shuffle(ArrayList<PlayingCard> deck) {
     Collections.shuffle(deck);
   }
 
