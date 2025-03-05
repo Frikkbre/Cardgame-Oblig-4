@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class DeckOfCards {
-  private ArrayList<String> deck;
-  private ArrayList<String> hand;
+  private ArrayList<PlayingCard> deck;
+  private ArrayList<PlayingCard> hand;
 
 
   DeckOfCards() {
@@ -24,19 +24,27 @@ public class DeckOfCards {
 
       switch(suitCounter) {
         case 0:
-          deck.add(i + "S");
+          String SName = i + "S";
+          PlayingCard Sname = new PlayingCard('S', i);
+          deck.add(Sname);
           break;
 
         case 1:
-          deck.add(i + "H");
+          String HName = i + "H";
+          PlayingCard Hname = new PlayingCard('H', i);
+          deck.add(Hname);
           break;
 
         case 2:
-          deck.add(i + "D");
+          String DName = i + "D";
+          PlayingCard Dname = new PlayingCard('D', i);
+          deck.add(Dname);
           break;
 
         case 3:
-          deck.add(i + "C");
+          String CName = i + "C";
+          PlayingCard Cname = new PlayingCard('C', i);
+          deck.add(Cname);
           break;
       }
     }
@@ -53,12 +61,10 @@ public class DeckOfCards {
    */
   public void dealHand(int n) {
     hand = new ArrayList<>();
-    if(deck.size() < 1 || deck.size() > 52) {
+    if(deck.isEmpty() || deck.size() > 52) {
       throw new IllegalArgumentException("Deck must have more than 1 and less than 52 cards");
     } else if (n < 1 || n > deck.size()) {
       throw new IllegalArgumentException("you must deal a hand between 1 and 52 cards");
-    } else if (n > deck.size()) {
-      throw new IllegalArgumentException("Not enough cards in deck to deal a hand of " + n + " cards");
     }
     for(int i = 0; i < n; i++) {
       hand.add(deck.get(i));
@@ -68,7 +74,7 @@ public class DeckOfCards {
 
 
 
-  public ArrayList<String> getDeck() {
+  public ArrayList<PlayingCard> getDeck() {
     return deck;
   }
 }
