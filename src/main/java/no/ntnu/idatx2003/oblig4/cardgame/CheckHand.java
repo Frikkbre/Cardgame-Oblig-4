@@ -1,5 +1,7 @@
 package no.ntnu.idatx2003.oblig4.cardgame;
 
+import java.util.ArrayList;
+
 /**
  * This class is used to check the hand of a player
  * Checks hand for:
@@ -50,11 +52,13 @@ public class CheckHand {
    * Displays only the cards with suit heart
    * @param hand the hand to display
    */
-  public static void displayHearts(PlayingCard[] hand) {
+  public static ArrayList<PlayingCard> displayHearts(PlayingCard[] hand) {
+    ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
     for (PlayingCard card : hand) {
       if (card.getSuit() == 'H') {
-        System.out.println(card.getAsString());
+        hearts.add(card);
       }
     }
+    return hearts;
   }
 }
