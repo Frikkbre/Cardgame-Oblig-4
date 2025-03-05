@@ -10,42 +10,10 @@ public class DeckOfCards {
 
 
   DeckOfCards() {
-    int suitCounter = 0;
     deck = new ArrayList<>();
-    for(int i = 1; i <= 14; i++) {
-      if(i == 14){
-        suitCounter++;
-        if(suitCounter == 4){
-          break;
-        }
-        i = 1;
-
-      }
-
-      switch(suitCounter) {
-        case 0:
-          String SName = i + "S";
-          PlayingCard Sname = new PlayingCard('S', i);
-          deck.add(Sname);
-          break;
-
-        case 1:
-          String HName = i + "H";
-          PlayingCard Hname = new PlayingCard('H', i);
-          deck.add(Hname);
-          break;
-
-        case 2:
-          String DName = i + "D";
-          PlayingCard Dname = new PlayingCard('D', i);
-          deck.add(Dname);
-          break;
-
-        case 3:
-          String CName = i + "C";
-          PlayingCard Cname = new PlayingCard('C', i);
-          deck.add(Cname);
-          break;
+    for (char suit : new char[]{'S', 'H', 'D', 'C'}) {
+      for (int i = 1; i <= 13; i++) {
+        deck.add(new PlayingCard(suit, i));
       }
     }
   }
