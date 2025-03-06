@@ -6,3 +6,6 @@ Frikk Brændsrød
 ## Description:
 Mandatory assignment 4 in the course "IDATG2003 - Programmering 2" at NTNU, Gjøvik 2025
 Card game
+
+## How to run:
+Run class xxx
