@@ -16,9 +16,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.smartcardio.Card;
+import java.util.ArrayList;
 
 public class CardGame extends Application {
   private Controller controller;
+  private DeckOfCards deckOfCards;
   private Text displayHand;
 
 
@@ -26,10 +28,14 @@ public class CardGame extends Application {
     CardGame.launch();
   }
 
-
+  /**
+   * Start the application
+   * @param primaryStage
+   * @throws Exception
+   */
   @Override
   public void start(Stage primaryStage) throws Exception {
-    DeckOfCards deckOfCards = new DeckOfCards();
+    deckOfCards = new DeckOfCards();
     CheckHand checkHand = new CheckHand();
     controller = new Controller(this, deckOfCards, checkHand);
 
@@ -46,6 +52,11 @@ public class CardGame extends Application {
     primaryStage.show();
   }
 
+  /**
+   * Create the menu bar at the top of the BorderPane
+   * Only has exit menu item
+   * @return
+   */
   private Node createMenuBar() {
     MenuItem closeMenuItem = new MenuItem("Close");
     closeMenuItem.setOnAction(event ->
@@ -59,7 +70,12 @@ public class CardGame extends Application {
     return menuBar;
   }
 
-  private Pane createCenterPane() {
+  /**
+   * Create the center pane of the BorderPane
+   * This is where the main content of the application will be displayed
+   * @return Center pane
+   */
+  private Pane createCenterPane() { //TODO - display data in seperate textFields
     Button drawButton = new Button("Draw hand");
     drawButton.setOnAction(event -> controller.drawHand());
 
@@ -80,19 +96,23 @@ public class CardGame extends Application {
     return(centerPane);
   }
 
-  public void update() {
+  /**
+   * Update the display with the current state of the game
+   * Updates textFields with the current hand, checks if the hand is a flush, contains the queen of spades, sum of cards and displays only the cards with suit heart
+   */
+  public void update() { //TODO - display data in seperate textFields
     // Update the displayHand text with the current hand
     StringBuilder handText = new StringBuilder("Hand: ");
-    for (PlayingCard card : controller.getDeckOfCards().getHand()) {
+    for (PlayingCard card : deckOfCards.getHand()) {
       handText.append(card.toString()).append(" ");
     }
     displayHand.setText(handText.toString());
 
     // Perform other updates as needed
-    boolean isFlush = CheckHand.isFlush(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
-    boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
-    int sumOfCards = CheckHand.sumOfCards(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
-    ArrayList<PlayingCard> hearts = CheckHand.displayHearts(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
+    boolean isFlush = CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0]));
+    boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0]));
+    int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
+    ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
 
     // Print or update UI with these values
     System.out.println("Is Flush: " + isFlush);
