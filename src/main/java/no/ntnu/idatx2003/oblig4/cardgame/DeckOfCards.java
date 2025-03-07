@@ -45,4 +45,8 @@ public class DeckOfCards {
   public ArrayList<PlayingCard> getDeck() {
     return deck;
   }
+
+  public ArrayList<PlayingCard> getHand() {
+    return hand;
+  }
 }
