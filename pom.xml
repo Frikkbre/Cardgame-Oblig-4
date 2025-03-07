@@ -14,10 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- TODO: Sett dine dependencies for JavaFX og JUnit5-testing -->
-
-    <!-- TODO: Sett riktig versjon av nødvendige plugins -->
-
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
