@@ -16,6 +16,11 @@ public class Controller {
         this.checkHand = checkHand;
     }
 
+    public Controller() {
+
+    }
+
+
     public void drawhand() {
         deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
     }
