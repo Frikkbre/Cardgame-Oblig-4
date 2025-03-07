@@ -80,6 +80,27 @@ public class CardGame extends Application {
     return(centerPane);
   }
 
+  public void update() {
+    // Update the displayHand text with the current hand
+    StringBuilder handText = new StringBuilder("Hand: ");
+    for (PlayingCard card : controller.getDeckOfCards().getHand()) {
+      handText.append(card.toString()).append(" ");
+    }
+    displayHand.setText(handText.toString());
+
+    // Perform other updates as needed
+    boolean isFlush = CheckHand.isFlush(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
+    boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
+    int sumOfCards = CheckHand.sumOfCards(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
+    ArrayList<PlayingCard> hearts = CheckHand.displayHearts(controller.getDeckOfCards().getHand().toArray(new PlayingCard[0]));
+
+    // Print or update UI with these values
+    System.out.println("Is Flush: " + isFlush);
+    System.out.println("Has Queen of Spades: " + hasQueenOfSpades);
+    System.out.println("Sum of Cards: " + sumOfCards);
+    System.out.println("Hearts: " + hearts);
+  }
+
 
   public void startGame() {
     DeckOfCards deck = new DeckOfCards();
