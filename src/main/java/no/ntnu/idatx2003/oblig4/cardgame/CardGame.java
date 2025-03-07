@@ -12,11 +12,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 import javax.smartcardio.Card;
 
 public class CardGame extends Application {
   Controller controller;
+  Text displayHand;
 
 
   public static void main(String[] args) {
@@ -35,6 +37,8 @@ public class CardGame extends Application {
 
     primaryStage.setScene(scene);
     primaryStage.setTitle("JavaFxDemo");
+    primaryStage.setMinHeight(540);
+    primaryStage.setMinWidth(960);
     primaryStage.show();
   }
 
@@ -58,9 +62,11 @@ public class CardGame extends Application {
     buttonPane.getChildren().addAll(drawButton);
     buttonPane.setAlignment(Pos.CENTER);
 
+    displayHand = new Text("Display hand here:");
+
     VBox centerPane = new VBox();
     centerPane.setAlignment(Pos.CENTER);
-    centerPane.getChildren().add(drawButton);
+    centerPane.getChildren().addAll(displayHand, drawButton);
     return(centerPane);
   }
 
