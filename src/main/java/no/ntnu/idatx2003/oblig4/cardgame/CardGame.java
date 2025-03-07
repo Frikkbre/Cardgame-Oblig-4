@@ -13,6 +13,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import javax.smartcardio.Card;
 
@@ -27,10 +28,11 @@ public class CardGame extends Application {
 
 
   @Override
-  public void start(javafx.stage.Stage primaryStage) throws Exception {
-    controller = new Controller();
+  public void start(Stage primaryStage) throws Exception {
+    DeckOfCards deckOfCards = new DeckOfCards();
+    CheckHand checkHand = new CheckHand();
+    controller = new Controller(this, deckOfCards, checkHand);
 
-    Pane centerPane = new Pane();
     BorderPane borderPane = new BorderPane();
     borderPane.setCenter(createCenterPane());
     borderPane.setTop(createMenuBar());
@@ -59,7 +61,7 @@ public class CardGame extends Application {
 
   private Pane createCenterPane() {
     Button drawButton = new Button("Draw hand");
-    drawButton.setOnAction(event -> controller.drawhand());
+    drawButton.setOnAction(event -> controller.drawHand());
 
     Button checkHandButton = new Button("Check hand");
     checkHandButton.setOnAction(event -> {
