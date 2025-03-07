@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 import javax.smartcardio.Card;
 import java.util.ArrayList;
 
+/**
+ * This class is the main class for the CardGame application
+ * It is responsible for starting the application and creating the GUI
+ */
 public class CardGame extends Application {
   private Controller controller;
   private DeckOfCards deckOfCards;
