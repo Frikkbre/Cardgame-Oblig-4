@@ -22,14 +22,16 @@ public class Controller {
 
     public void drawHand() {
         deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
+        cardGame.update();
         System.out.println("Hand: " + deckOfCards.getHand().getFirst().getSuit());
     }
 
     /**
      * Is triggered when the user presses the "Check hand" button
      */
-    public void checkHand(){
+    public void checkHand(){ //TODO - Redundant method??
         checkHand.checkAll(deckOfCards);
+        cardGame.update();
     }
 
 
