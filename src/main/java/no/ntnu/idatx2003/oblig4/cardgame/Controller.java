@@ -17,12 +17,12 @@ public class Controller {
     }
 
     public Controller() {
-
     }
 
 
-    public void drawhand() {
+    public void drawHand() {
         deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
+        System.out.println("Hand: " + deckOfCards.getHand().getFirst().getSuit());
     }
 
     /**
