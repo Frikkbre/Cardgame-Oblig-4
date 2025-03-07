@@ -8,4 +8,4 @@ Mandatory assignment 4 in the course "IDATG2003 - Programmering 2" at NTNU, Gjø
 Card game
 
 ## How to run:
-Run class xxx
+Run class CardGame.java
