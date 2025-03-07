@@ -17,8 +17,8 @@ import javafx.scene.text.Text;
 import javax.smartcardio.Card;
 
 public class CardGame extends Application {
-  Controller controller;
-  Text displayHand;
+  private Controller controller;
+  private Text displayHand;
 
 
   public static void main(String[] args) {
@@ -28,6 +28,8 @@ public class CardGame extends Application {
 
   @Override
   public void start(javafx.stage.Stage primaryStage) throws Exception {
+    controller = new Controller();
+
     Pane centerPane = new Pane();
     BorderPane borderPane = new BorderPane();
     borderPane.setCenter(createCenterPane());
