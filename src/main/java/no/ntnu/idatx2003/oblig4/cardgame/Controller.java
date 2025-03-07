@@ -4,6 +4,10 @@ import javafx.event.ActionEvent;
 
 import javax.smartcardio.Card;
 
+/**
+ * This class is the controller for the CardGame application
+ * Works as a event handler for the buttons in the CardGame class
+ */
 public class Controller {
 
     private CardGame cardGame;
@@ -19,11 +23,14 @@ public class Controller {
     public Controller() {
     }
 
-
+    /**
+     * Is triggered when the user presses the "Draw hand" button
+     * Deals a hand of five cards
+     * Also calls the update method in the CardGame class
+     */
     public void drawHand() {
         deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
         cardGame.update();
-        System.out.println("Hand: " + deckOfCards.getHand().getFirst().getSuit());
     }
 
     /**
