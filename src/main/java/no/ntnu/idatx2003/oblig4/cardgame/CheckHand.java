@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class CheckHand {
 
+
   /**
    * Checks if the hand is a flush
    * @param hand the hand to check
@@ -60,5 +61,14 @@ public class CheckHand {
       }
     }
     return hearts;
+  }
+
+
+  public void checkAll(DeckOfCards deckOfCards) {
+    PlayingCard[] handArray = deckOfCards.getHand().toArray(new PlayingCard[0]);
+    boolean isFlush = isFlush(handArray);
+    boolean hasQueenOfSpades = hasQueenOfSpades(handArray);
+    int sumOfCards = sumOfCards(handArray);
+    ArrayList<PlayingCard> hearts = displayHearts(handArray);
   }
 }
