@@ -36,7 +36,7 @@ public class CardGame extends Application {
     Scene scene = new Scene(borderPane);
 
     primaryStage.setScene(scene);
-    primaryStage.setTitle("JavaFxDemo");
+    primaryStage.setTitle("Card Game");
     primaryStage.setMinHeight(540);
     primaryStage.setMinWidth(960);
     primaryStage.show();
@@ -57,6 +57,12 @@ public class CardGame extends Application {
 
   private Pane createCenterPane() {
     Button drawButton = new Button("Draw hand");
+    drawButton.setOnAction(event -> controller.drawhand());
+
+    Button checkHandButton = new Button("Check hand");
+    checkHandButton.setOnAction(event -> {
+      controller.checkHand();
+    });
 
     FlowPane buttonPane = new FlowPane();
     buttonPane.getChildren().addAll(drawButton);
