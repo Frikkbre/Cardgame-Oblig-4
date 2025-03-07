@@ -1,6 +1,7 @@
 package no.ntnu.idatx2003.oblig4.cardgame;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -8,11 +9,14 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import javax.smartcardio.Card;
 
 public class CardGame extends Application {
+  Controller controller;
 
 
   public static void main(String[] args) {
@@ -36,8 +40,8 @@ public class CardGame extends Application {
 
   private Node createMenuBar() {
     MenuItem closeMenuItem = new MenuItem("Close");
-    //closeMenuItem.setOnAction(event ->
-        //controller.exit());
+    closeMenuItem.setOnAction(event ->
+        controller.exit());
 
     Menu fileMenu = new Menu("File");
     fileMenu.getItems().addAll(closeMenuItem);
@@ -48,8 +52,15 @@ public class CardGame extends Application {
   }
 
   private Pane createCenterPane() {
-    Pane centerPane = new Pane();
-    Button button = new Button();
+    Button drawButton = new Button("Draw hand");
+
+    FlowPane buttonPane = new FlowPane();
+    buttonPane.getChildren().addAll(drawButton);
+    buttonPane.setAlignment(Pos.CENTER);
+
+    VBox centerPane = new VBox();
+    centerPane.setAlignment(Pos.CENTER);
+    centerPane.getChildren().add(drawButton);
     return(centerPane);
   }
 
