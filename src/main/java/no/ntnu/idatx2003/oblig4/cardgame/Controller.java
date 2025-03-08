@@ -32,18 +32,25 @@ public class Controller {
     public void drawHand() {
         try{
             deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
-            checkHand.checkAll(deckOfCards);
+            checkHand.checkAll(deckOfCards); //TODO - redundant?
             cardGame.update();
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
+    public void reset() {
+        deckOfCards.getDeck().clear();
+        deckOfCards.getHand().clear();
+        deckOfCards.reset();
+        cardGame.update();
+    }
+
 
     /**
      * Used to exit the program from the top menu
      */
-    public void exit() { //TODO - Fix this method
+    public void exit() {
         System.exit(0);
     }
 }
