@@ -45,15 +45,21 @@ public class DeckOfCards {
    */
   public void dealHand(int n) {
     hand = new ArrayList<>();
-    if(deck.isEmpty() || deck.size() > 52) {
-      throw new IllegalArgumentException("Deck must have more than 1 and less than 52 cards");
-    } else if (n < 1 || n > deck.size()) {
-      throw new IllegalArgumentException("you must deal a hand between 1 and 52 cards");
-    }
-    hand.clear();
-    for(int i = 0; i < n; i++) {
-      hand.add(deck.get(i));
-      deck.remove(i);
+    try {
+      if (deck.isEmpty() || deck.size() > 52) {
+        throw new IllegalArgumentException("Deck must have more than 1 and less than 52 cards");
+      } else if (n < 5 || n > deck.size()) {
+        throw new IllegalArgumentException("You must deal a hand between 1 and 52 cards");
+      } else if (deck.size() <= 5) {
+        throw new IllegalArgumentException("Not enough cards in deck to deal a hand");
+      }
+      hand.clear();
+      for (int i = 0; i < n; i++) {
+        hand.add(deck.get(i));
+        deck.remove(i);
+      }
+    } catch (IllegalArgumentException e) {
+      System.out.println(e.getMessage());
     }
   }
 
