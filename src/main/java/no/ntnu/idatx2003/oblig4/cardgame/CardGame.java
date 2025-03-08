@@ -4,10 +4,7 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -25,7 +22,7 @@ import java.util.ArrayList;
 public class CardGame extends Application {
   private Controller controller;
   private DeckOfCards deckOfCards;
-  private Text displayHand;
+  private TextField displayHand;
 
 
   public static void main(String[] args) {
@@ -92,9 +89,10 @@ public class CardGame extends Application {
     buttonPane.getChildren().addAll(drawButton);
     buttonPane.setAlignment(Pos.CENTER);
 
-    displayHand = new Text("Display hand here:");
+    displayHand = new TextField("Display hand here:");
 
     VBox centerPane = new VBox();
+    VBox TextFields = new VBox();
     centerPane.setAlignment(Pos.CENTER);
     centerPane.getChildren().addAll(displayHand, drawButton);
     return(centerPane);
@@ -108,7 +106,7 @@ public class CardGame extends Application {
     // Update the displayHand text with the current hand
     StringBuilder handText = new StringBuilder("Hand: ");
     for (PlayingCard card : deckOfCards.getHand()) {
-      handText.append(card.toString()).append(" ");
+      handText.append(card.getSuit()).append(card.getFace()).append(" ");
     }
     displayHand.setText(handText.toString());
 
