@@ -23,7 +23,10 @@ public class CardGame extends Application {
   private Controller controller;
   private DeckOfCards deckOfCards;
   private TextField displayHand;
-  private TextField displayChecks;
+  private TextField displayFlush;
+  private TextField displayQueenOfSpades;
+  private TextField displaySumOfCards;
+  private TextField displayHearts;
 
 
   public static void main(String[] args) {
@@ -90,14 +93,29 @@ public class CardGame extends Application {
     displayHand.setFont(new javafx.scene.text.Font(20));
     displayHand.setMaxWidth(300);
 
-    displayChecks = new TextField("Checks are displayed here: ");
-    displayChecks.setEditable(false);
-    displayChecks.setFont(new javafx.scene.text.Font(10));
-    displayChecks.setMaxWidth(300);
+    displayFlush = new TextField("Is flush: ");
+    displayFlush.setEditable(false);
+    displayFlush.setFont(new javafx.scene.text.Font(10));
+    displayFlush.setMaxWidth(300);
+
+    displayQueenOfSpades = new TextField("Has queen of spades: ");
+    displayQueenOfSpades.setEditable(false);
+    displayQueenOfSpades.setFont(new javafx.scene.text.Font(10));
+    displayQueenOfSpades.setMaxWidth(300);
+
+    displaySumOfCards = new TextField("Sum of Cards: ");
+    displaySumOfCards.setEditable(false);
+    displaySumOfCards.setFont(new javafx.scene.text.Font(10));
+    displaySumOfCards.setMaxWidth(300);
+
+    displayHearts = new TextField("Hearts: ");
+    displayHearts.setEditable(false);
+    displayHearts.setFont(new javafx.scene.text.Font(10));
+    displayHearts.setMaxWidth(300);
 
     VBox centerPane = new VBox();
     centerPane.setAlignment(Pos.CENTER);
-    centerPane.getChildren().addAll(displayHand, drawButton, displayChecks);
+    centerPane.getChildren().addAll(displayHand, drawButton, displayFlush, displayQueenOfSpades, displaySumOfCards, displayHearts);
     return(centerPane);
   }
 
@@ -124,5 +142,19 @@ public class CardGame extends Application {
     System.out.println("Has Queen of Spades: " + hasQueenOfSpades);
     System.out.println("Sum of Cards: " + sumOfCards);
     System.out.println("Hearts: " + hearts);
+
+
+    StringBuilder flushText = new StringBuilder("Is flush: " + CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0])));
+
+    StringBuilder queenOfSpadesText = new StringBuilder("Has queen of spades: " + CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0])));
+
+    StringBuilder sumOfCardsText = new StringBuilder("Sum of cards: " + CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0])));
+
+    StringBuilder heartsText = new StringBuilder("Hearts: " + hearts);
+
+    displayFlush.setText(flushText.toString());
+    displayQueenOfSpades.setText(queenOfSpadesText.toString());
+    displaySumOfCards.setText(sumOfCardsText.toString());
+    displayHearts.setText(heartsText.toString());
   }
 }
