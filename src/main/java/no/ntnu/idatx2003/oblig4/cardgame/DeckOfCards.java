@@ -3,6 +3,7 @@ package no.ntnu.idatx2003.oblig4.cardgame;
 import javax.smartcardio.Card;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class DeckOfCards {
   private ArrayList<PlayingCard> deck;
@@ -18,10 +19,26 @@ public class DeckOfCards {
     }
   }
 
-  public void shuffle(ArrayList<PlayingCard> deck) {
-    Collections.shuffle(deck);
+  public void reset() {
+    deck.clear();
+    hand.clear();
+    deck = new ArrayList<>();
+    for (char suit : new char[]{'S', 'H', 'D', 'C'}) {
+      for (int i = 1; i <= 13; i++) {
+        deck.add(new PlayingCard(suit, i));
+      }
+    }
   }
 
+  public void shuffle(ArrayList<PlayingCard> deck) {
+    Random random = new Random();
+    for (int i = deck.size() - 1; i > 0; i--) {
+      int j = random.nextInt(i + 1);
+      PlayingCard temp = deck.get(i);
+      deck.set(i, deck.get(j));
+      deck.set(j, temp);
+    }
+  }
   /**
    * Deals n cards from the remaining cards in the deck
    * checks if deck has more than 1 and under 52 cards and throws exception if not
