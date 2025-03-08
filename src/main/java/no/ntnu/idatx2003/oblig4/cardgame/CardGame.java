@@ -130,9 +130,6 @@ public class CardGame extends Application {
    * Updates textFields with the current hand, checks if the hand is a flush, contains the queen of spades, sum of cards and displays only the cards with suit heart
    */
   public void update() { //TODO - display data in seperate textFields
-
-    System.out.println(deckOfCards.getDeck().size());
-    // Update the displayHand text with the current hand
     StringBuilder handText = new StringBuilder("Hand: ");
     if (deckOfCards.getDeck().size() <= 5) {
       handText.append("Not enough cards in deck");
