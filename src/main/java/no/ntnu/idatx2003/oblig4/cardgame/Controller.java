@@ -26,23 +26,17 @@ public class Controller {
     /**
      * Is triggered when the user presses the "Draw hand" button
      * Deals a hand of five cards
+     * Checks the hand for flush, queen of spades, sum of cards and displays only the hearts
      * Also calls the update method in the CardGame class
      */
     public void drawHand() {
         try{
             deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
+            checkHand.checkAll(deckOfCards);
             cardGame.update();
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }
-
-    /**
-     * Is triggered when the user presses the "Check hand" button
-     */
-    public void checkHand(){ //TODO - Redundant method??
-        checkHand.checkAll(deckOfCards);
-        cardGame.update();
     }
 
 
