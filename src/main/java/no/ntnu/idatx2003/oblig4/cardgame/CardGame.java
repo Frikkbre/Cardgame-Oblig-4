@@ -35,6 +35,7 @@ public class CardGame extends Application {
 
   /**
    * Start the application
+   *
    * @param primaryStage
    * @throws Exception
    */
@@ -60,12 +61,13 @@ public class CardGame extends Application {
   /**
    * Create the menu bar at the top of the BorderPane
    * Only has exit menu item
+   *
    * @return
    */
   private Node createMenuBar() {
     MenuItem closeMenuItem = new MenuItem("Close");
     closeMenuItem.setOnAction(event ->
-        controller.exit());
+            controller.exit());
 
     Menu fileMenu = new Menu("File");
     fileMenu.getItems().addAll(closeMenuItem);
@@ -78,6 +80,7 @@ public class CardGame extends Application {
   /**
    * Create the center pane of the BorderPane
    * This is where the main content of the application will be displayed
+   *
    * @return Center pane
    */
   private Pane createCenterPane() { //TODO - display data in seperate textFields
@@ -119,7 +122,7 @@ public class CardGame extends Application {
     VBox centerPane = new VBox();
     centerPane.setAlignment(Pos.CENTER);
     centerPane.getChildren().addAll(displayHand, drawButton, resetButton, displayFlush, displayQueenOfSpades, displaySumOfCards, displayHearts);
-    return(centerPane);
+    return (centerPane);
   }
 
   /**
@@ -127,28 +130,35 @@ public class CardGame extends Application {
    * Updates textFields with the current hand, checks if the hand is a flush, contains the queen of spades, sum of cards and displays only the cards with suit heart
    */
   public void update() { //TODO - display data in seperate textFields
+
+    System.out.println(deckOfCards.getDeck().size());
     // Update the displayHand text with the current hand
     StringBuilder handText = new StringBuilder("Hand: ");
-    for (PlayingCard card : deckOfCards.getHand()) {
-      handText.append(card.getSuit()).append(card.getFace()).append(" ");
+    if (deckOfCards.getDeck().size() <= 5) {
+      handText.append("Not enough cards in deck");
+      displayHand.setText(handText.toString());
+    } else {
+      for (PlayingCard card : deckOfCards.getHand()) {
+        handText.append(card.getSuit()).append(card.getFace()).append(" ");
+      }
+      displayHand.setText(handText.toString());
+
+      // Perform other updates as needed
+      boolean isFlush = CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0]));
+      boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0]));
+      int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
+      ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
+
+
+      StringBuilder flushText = new StringBuilder("Is flush: " + CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0])));
+      StringBuilder queenOfSpadesText = new StringBuilder("Has queen of spades: " + CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0])));
+      StringBuilder sumOfCardsText = new StringBuilder("Sum of cards: " + CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0])));
+      StringBuilder heartsText = new StringBuilder("Hearts: " + hearts);
+
+      displayFlush.setText(flushText.toString());
+      displayQueenOfSpades.setText(queenOfSpadesText.toString());
+      displaySumOfCards.setText(sumOfCardsText.toString());
+      displayHearts.setText(heartsText.toString());
     }
-    displayHand.setText(handText.toString());
-
-    // Perform other updates as needed
-    boolean isFlush = CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0]));
-    boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0]));
-    int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
-    ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
-
-
-    StringBuilder flushText = new StringBuilder("Is flush: " + CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0])));
-    StringBuilder queenOfSpadesText = new StringBuilder("Has queen of spades: " + CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0])));
-    StringBuilder sumOfCardsText = new StringBuilder("Sum of cards: " + CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0])));
-    StringBuilder heartsText = new StringBuilder("Hearts: " + hearts);
-
-    displayFlush.setText(flushText.toString());
-    displayQueenOfSpades.setText(queenOfSpadesText.toString());
-    displaySumOfCards.setText(sumOfCardsText.toString());
-    displayHearts.setText(heartsText.toString());
   }
 }
