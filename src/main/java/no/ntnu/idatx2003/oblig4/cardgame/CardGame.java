@@ -23,6 +23,7 @@ public class CardGame extends Application {
   private Controller controller;
   private DeckOfCards deckOfCards;
   private TextField displayHand;
+  private TextField displayChecks;
 
 
   public static void main(String[] args) {
@@ -80,21 +81,23 @@ public class CardGame extends Application {
     Button drawButton = new Button("Draw hand");
     drawButton.setOnAction(event -> controller.drawHand());
 
-    Button checkHandButton = new Button("Check hand");
-    checkHandButton.setOnAction(event -> {
-      controller.checkHand();
-    });
-
     FlowPane buttonPane = new FlowPane();
     buttonPane.getChildren().addAll(drawButton);
     buttonPane.setAlignment(Pos.CENTER);
 
-    displayHand = new TextField("Display hand here:");
+    displayHand = new TextField("Hand is diplayed here: ");
+    displayHand.setEditable(false);
+    displayHand.setFont(new javafx.scene.text.Font(20));
+    displayHand.setMaxWidth(300);
+
+    displayChecks = new TextField("Checks are displayed here: ");
+    displayChecks.setEditable(false);
+    displayChecks.setFont(new javafx.scene.text.Font(10));
+    displayChecks.setMaxWidth(300);
 
     VBox centerPane = new VBox();
-    VBox TextFields = new VBox();
     centerPane.setAlignment(Pos.CENTER);
-    centerPane.getChildren().addAll(displayHand, drawButton);
+    centerPane.getChildren().addAll(displayHand, drawButton, displayChecks);
     return(centerPane);
   }
 
@@ -116,17 +119,10 @@ public class CardGame extends Application {
     int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
     ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
 
-    // Print or update UI with these values
+    // Print or update UI with these values TODO - add to UI  in seperate textFields
     System.out.println("Is Flush: " + isFlush);
     System.out.println("Has Queen of Spades: " + hasQueenOfSpades);
     System.out.println("Sum of Cards: " + sumOfCards);
     System.out.println("Hearts: " + hearts);
-  }
-
-
-  public void startGame() {
-    DeckOfCards deck = new DeckOfCards();
-    deck.shuffle(deck.getDeck());
-    deck.dealHand(5);
   }
 }
