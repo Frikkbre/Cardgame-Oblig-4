@@ -29,8 +29,12 @@ public class Controller {
      * Also calls the update method in the CardGame class
      */
     public void drawHand() {
-        deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
-        cardGame.update();
+        try{
+            deckOfCards.dealHand(5); //Hardcoded to draw 5 cards
+            cardGame.update();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     /**
