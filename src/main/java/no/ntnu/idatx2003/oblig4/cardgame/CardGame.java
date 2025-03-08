@@ -84,8 +84,11 @@ public class CardGame extends Application {
     Button drawButton = new Button("Draw hand");
     drawButton.setOnAction(event -> controller.drawHand());
 
+    Button resetButton = new Button("Reset");
+    resetButton.setOnAction(event -> controller.reset());
+
     FlowPane buttonPane = new FlowPane();
-    buttonPane.getChildren().addAll(drawButton);
+    buttonPane.getChildren().addAll(drawButton, resetButton);
     buttonPane.setAlignment(Pos.CENTER);
 
     displayHand = new TextField("Hand is diplayed here: ");
@@ -115,7 +118,7 @@ public class CardGame extends Application {
 
     VBox centerPane = new VBox();
     centerPane.setAlignment(Pos.CENTER);
-    centerPane.getChildren().addAll(displayHand, drawButton, displayFlush, displayQueenOfSpades, displaySumOfCards, displayHearts);
+    centerPane.getChildren().addAll(displayHand, drawButton, resetButton, displayFlush, displayQueenOfSpades, displaySumOfCards, displayHearts);
     return(centerPane);
   }
 
@@ -137,19 +140,10 @@ public class CardGame extends Application {
     int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
     ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
 
-    // Print or update UI with these values TODO - add to UI  in seperate textFields
-    System.out.println("Is Flush: " + isFlush);
-    System.out.println("Has Queen of Spades: " + hasQueenOfSpades);
-    System.out.println("Sum of Cards: " + sumOfCards);
-    System.out.println("Hearts: " + hearts);
-
 
     StringBuilder flushText = new StringBuilder("Is flush: " + CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0])));
-
     StringBuilder queenOfSpadesText = new StringBuilder("Has queen of spades: " + CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0])));
-
     StringBuilder sumOfCardsText = new StringBuilder("Sum of cards: " + CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0])));
-
     StringBuilder heartsText = new StringBuilder("Hearts: " + hearts);
 
     displayFlush.setText(flushText.toString());
