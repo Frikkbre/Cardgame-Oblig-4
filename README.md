@@ -8,6 +8,4 @@ Mandatory assignment 4 in the course "IDATG2003 - Programmering 2" at NTNU, Gjø
 Card game
 
 ## How to run:
-Run class CardGame.java <br>
-
-Or run the command `mvn javafx:run` in the terminal
+run the command `mvn javafx:run` in the terminal while in the root directory of the project.
