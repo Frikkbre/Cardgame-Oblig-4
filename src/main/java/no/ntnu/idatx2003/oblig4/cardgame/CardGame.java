@@ -42,6 +42,7 @@ public class CardGame extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     deckOfCards = new DeckOfCards();
+    deckOfCards.shuffle(deckOfCards.getDeck());
     CheckHand checkHand = new CheckHand();
     controller = new Controller(this, deckOfCards, checkHand);
 
