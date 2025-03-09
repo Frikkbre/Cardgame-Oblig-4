@@ -83,7 +83,7 @@ public class CardGame extends Application {
    *
    * @return Center pane
    */
-  private Pane createCenterPane() { //TODO - display data in seperate textFields
+  private Pane createCenterPane() {
     Button drawButton = new Button("Draw hand");
     drawButton.setOnAction(event -> controller.drawHand());
 
@@ -129,7 +129,7 @@ public class CardGame extends Application {
    * Update the display with the current state of the game
    * Updates textFields with the current hand, checks if the hand is a flush, contains the queen of spades, sum of cards and displays only the cards with suit heart
    */
-  public void update() { //TODO - display data in seperate textFields
+  public void update() {
     StringBuilder handText = new StringBuilder("Hand: ");
     if (deckOfCards.getDeck().size() <= 5) {
       handText.append("Not enough cards in deck");
