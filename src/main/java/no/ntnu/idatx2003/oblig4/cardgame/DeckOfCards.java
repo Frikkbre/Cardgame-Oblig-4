@@ -16,6 +16,7 @@ public class DeckOfCards {
       for (int i = 1; i <= 13; i++) {
         deck.add(new PlayingCard(suit, i));
       }
+      shuffle(deck);
     }
   }
 
@@ -28,16 +29,18 @@ public class DeckOfCards {
         deck.add(new PlayingCard(suit, i));
       }
     }
+    shuffle(deck);
   }
 
   public void shuffle(ArrayList<PlayingCard> deck) {
     Random random = new Random();
-    for (int i = deck.size() - 1; i > 0; i--) {
-      int j = random.nextInt(i + 1);
-      PlayingCard temp = deck.get(i);
-      deck.set(i, deck.get(j));
-      deck.set(j, temp);
+    ArrayList<PlayingCard> shuffled = new ArrayList<>();
+    for(int i = 0; i < deck.size(); i++) {
+      int randomIndex = random.nextInt(deck.size());
+      shuffled.add(deck.get(randomIndex));
+      deck.remove(randomIndex);
     }
+    deck.addAll(shuffled);
   }
   /**
    * Deals n cards from the remaining cards in the deck
