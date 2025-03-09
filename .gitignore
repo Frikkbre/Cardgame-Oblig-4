@@ -7,3 +7,13 @@ out/
 
 # Maven
 target/
+
+.DS_Store
+src/.DS_Store
+src/main/.DS_Store
+src/main/java/.DS_Store
+src/main/java/no/.DS_Store
+src/main/java/no/ntnu/.DS_Store
+src/main/java/no/ntnu/idatx2003/.DS_Store
+src/main/java/no/ntnu/idatx2003/oblig4/.DS_Store
+src/main/java/no/ntnu/idatx2003/oblig4/cardgame/.DS_Store
