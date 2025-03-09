@@ -4,16 +4,19 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
-
-import javax.smartcardio.Card;
 import java.util.ArrayList;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 
 /**
  * This class is the main class for the CardGame application
@@ -68,7 +71,7 @@ public class CardGame extends Application {
   private Node createMenuBar() {
     MenuItem closeMenuItem = new MenuItem("Close");
     closeMenuItem.setOnAction(event ->
-            controller.exit());
+        controller.exit());
 
     Menu fileMenu = new Menu("File");
     fileMenu.getItems().addAll(closeMenuItem);
@@ -123,6 +126,7 @@ public class CardGame extends Application {
     VBox centerPane = new VBox();
     centerPane.setAlignment(Pos.CENTER);
     centerPane.getChildren().addAll(displayHand, drawButton, resetButton, displayFlush, displayQueenOfSpades, displaySumOfCards, displayHearts);
+    centerPane.setBackground(setBackground());
     return (centerPane);
   }
 
@@ -146,7 +150,7 @@ public class CardGame extends Application {
       int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
       ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
       ArrayList<String> heartsString = new ArrayList<>();
-      for(int i = 0; i < hearts.size(); i++) {
+      for (int i = 0; i < hearts.size(); i++) {
         heartsString.add(hearts.get(i).getSuit() + "" + hearts.get(i).getFace());
       }
 
@@ -161,5 +165,15 @@ public class CardGame extends Application {
       displaySumOfCards.setText(sumOfCardsText.toString());
       displayHearts.setText(heartsText.toString());
     }
+  }
+
+  /**
+   * Set the background of the application
+   * Uses image /img/Poker-Table.png
+   *
+   * @return image used as background
+   */
+  private Background setBackground() {
+    return new Background(new BackgroundFill(javafx.scene.paint.Color.DARKGREEN, null, null)); // Default green felt background
   }
 }
