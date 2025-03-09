@@ -145,12 +145,16 @@ public class CardGame extends Application {
       boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0]));
       int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
       ArrayList<PlayingCard> hearts = CheckHand.displayHearts(deckOfCards.getHand().toArray(new PlayingCard[0]));
+      ArrayList<String> heartsString = new ArrayList<>();
+      for(int i = 0; i < hearts.size(); i++) {
+        heartsString.add(hearts.get(i).getSuit() + "" + hearts.get(i).getFace());
+      }
 
 
       StringBuilder flushText = new StringBuilder("Is flush: " + CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0])));
       StringBuilder queenOfSpadesText = new StringBuilder("Has queen of spades: " + CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0])));
       StringBuilder sumOfCardsText = new StringBuilder("Sum of cards: " + CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0])));
-      StringBuilder heartsText = new StringBuilder("Hearts: " + hearts);
+      StringBuilder heartsText = new StringBuilder("Hearts: " + heartsString);
 
       displayFlush.setText(flushText.toString());
       displayQueenOfSpades.setText(queenOfSpadesText.toString());
