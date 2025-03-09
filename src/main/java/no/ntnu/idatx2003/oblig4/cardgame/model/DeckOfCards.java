@@ -1,8 +1,6 @@
-package no.ntnu.idatx2003.oblig4.cardgame;
+package no.ntnu.idatx2003.oblig4.cardgame.model;
 
-import javax.smartcardio.Card;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 
 public class DeckOfCards {
@@ -10,7 +8,7 @@ public class DeckOfCards {
   private ArrayList<PlayingCard> hand;
 
 
-  DeckOfCards() {
+  public DeckOfCards() {
     deck = new ArrayList<>();
     for (char suit : new char[]{'S', 'H', 'D', 'C'}) {
       for (int i = 1; i <= 13; i++) {

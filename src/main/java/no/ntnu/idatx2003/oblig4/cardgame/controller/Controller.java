@@ -1,8 +1,7 @@
-package no.ntnu.idatx2003.oblig4.cardgame;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
-
-import javax.smartcardio.Card;
+package no.ntnu.idatx2003.oblig4.cardgame.controller;
+import no.ntnu.idatx2003.oblig4.cardgame.view.CardGame;
+import no.ntnu.idatx2003.oblig4.cardgame.model.CheckHand;
+import no.ntnu.idatx2003.oblig4.cardgame.model.DeckOfCards;
 
 /**
  * This class is the controller for the CardGame application

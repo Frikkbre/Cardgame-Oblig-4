@@ -1,5 +1,7 @@
 package no.ntnu.idatx2003.oblig4.cardgame;
 
+import no.ntnu.idatx2003.oblig4.cardgame.model.CheckHand;
+import no.ntnu.idatx2003.oblig4.cardgame.model.PlayingCard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -128,6 +130,37 @@ public class TestCheckHand {
 
         // Assert
         assertEquals(4, result.size());
+    }
+
+    @Test
+    public void testHeartsNegative() {
+        // Arrange
+        PlayingCard[] hand = new PlayingCard[]{
+            new PlayingCard('H', 1),
+            new PlayingCard('H', 2),
+            new PlayingCard('H', 3),
+            new PlayingCard('H', 4),
+            new PlayingCard('H', 5)
+        };
+        CheckHand checkHand = new CheckHand();
+        ArrayList<PlayingCard> hearts = new ArrayList<PlayingCard>();
+        for (PlayingCard card : hand) {
+            if (card.getSuit() == 'H') {
+                hearts.add(card);
+            }
+        }
+
+
+        // Act
+        ArrayList<PlayingCard> heartsNegative = new ArrayList<PlayingCard>();
+        for (PlayingCard card : hand) {
+            if (card.getSuit() == 'S') {
+                hearts.add(card);
+            }
+        }
+
+        // Assert
+        assertNotEquals(hearts, heartsNegative);
     }
 }
 

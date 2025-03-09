@@ -1,4 +1,4 @@
-package no.ntnu.idatx2003.oblig4.cardgame;
+package no.ntnu.idatx2003.oblig4.cardgame.view;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -13,10 +13,10 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import java.util.ArrayList;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import no.ntnu.idatx2003.oblig4.cardgame.model.CheckHand;
+import no.ntnu.idatx2003.oblig4.cardgame.model.DeckOfCards;
+import no.ntnu.idatx2003.oblig4.cardgame.model.PlayingCard;
+import no.ntnu.idatx2003.oblig4.cardgame.controller.Controller;
 
 /**
  * This class is the main class for the CardGame application

@@ -1,6 +1,4 @@
-package no.ntnu.idatx2003.oblig4.cardgame;
-
-import java.util.List;
+package no.ntnu.idatx2003.oblig4.cardgame.model;
 
 /**
  * Represents a playing card. A playing card has a number (face) between

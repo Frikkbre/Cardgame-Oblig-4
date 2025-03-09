@@ -1,5 +1,7 @@
 package no.ntnu.idatx2003.oblig4.cardgame;
 
+import no.ntnu.idatx2003.oblig4.cardgame.model.DeckOfCards;
+import no.ntnu.idatx2003.oblig4.cardgame.model.PlayingCard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,4 +54,21 @@ public class TestDeckOfCards {
         // Assert
         assertEquals(deckSizeBeforeDeal - 5, deckSizeAfterDeal);
     }
+
+    @Test
+    public void testReset() {
+        // Arrange
+        DeckOfCards deckOfCards = new DeckOfCards();
+        deckOfCards.dealHand(5);
+        int deckSize = deckOfCards.getDeck().size();
+        int handSize = deckOfCards.getHand().size();
+
+        // Act
+        deckOfCards.reset();
+
+        // Assert
+        assertEquals(52, deckOfCards.getDeck().size());
+        assertEquals(0, deckOfCards.getHand().size());
+    }
+
 }
