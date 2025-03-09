@@ -140,7 +140,6 @@ public class CardGame extends Application {
       }
       displayHand.setText(handText.toString());
 
-      // Perform other updates as needed
       boolean isFlush = CheckHand.isFlush(deckOfCards.getHand().toArray(new PlayingCard[0]));
       boolean hasQueenOfSpades = CheckHand.hasQueenOfSpades(deckOfCards.getHand().toArray(new PlayingCard[0]));
       int sumOfCards = CheckHand.sumOfCards(deckOfCards.getHand().toArray(new PlayingCard[0]));
